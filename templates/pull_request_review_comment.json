@@ -1,0 +1,5 @@
+{
+    "message": "<b><a href='{{repository.html_url}}'>{{repository.name}}</a></b> - <a href='{{comment.user.html_url}}'>{{comment.user.login}}</a> {{action}} a <a href='{{comment.html_url}}'>comment</a> on pull request <a href='{{pull_request.html_url}}'>#{{pull_request.number}} \"{{pull_request.title}}\".", 
+    "message_format": "html", 
+    "color": "gray"
+}

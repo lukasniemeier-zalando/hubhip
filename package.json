@@ -7,9 +7,12 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "~4.9.x",
     "body-parser": "1.12.3",
-    "multer": "0.1.8"
+    "express": "~4.9.x",
+    "glob": "^7.0.3",
+    "multer": "0.1.8",
+    "mustache": "^2.2.1",
+    "request": "^2.71.0"
   },
   "engines": {
     "node": "0.12.2"

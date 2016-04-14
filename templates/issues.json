@@ -1,0 +1,5 @@
+{
+    "message": "<b><a href='{{repository.html_url}}'>{{repository.name}}</a></b> - <a href='{{issue.user.html_url}}'>{{issue.user.login}}</a> {{action}} {{#assignee}}{{assignee.login}} on {{/assignee}} issue <a href='{{issue.html_url}}'>#{{issue.number}} \"{{issue.title}}\"</a>{{#label}} as <i>\"{{label.name}}\"</i>{{/label}}.", 
+    "message_format": "html", 
+    "color": "gray"
+}
