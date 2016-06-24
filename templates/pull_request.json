@@ -1,5 +1,5 @@
 {
-    "message": "<b><a href='{{repository.html_url}}'>{{repository.name}}</a></b> - <a href='{{pull_request.user.html_url}}'>{{pull_request.user.login}}</a> {{action}}{{#pull_request.merged}} (<span style='color:#6e5494;'>merged</span>){{/pull_request.merged}}{{#assignee}} {{assignee.login}} on{{/assignee}} pull request <a href='{{pull_request.html_url}}'>#{{pull_request.number}} \"{{pull_request.title}}\"</a>{{#label}} as <span style='color:{{label.color}};'>\"{{label.name}}\"</span>{{/label}}.", 
+    "message": "<b><a href='{{repository.html_url}}'>{{repository.name}}</a></b> - <a href='{{sender.html_url}}'>{{sender.login}}</a> {{action}}{{#pull_request.merged}} (<span style='color:#6e5494;'>merged</span>){{/pull_request.merged}}{{#assignee}} {{assignee.login}} on{{/assignee}} pull request <a href='{{pull_request.html_url}}'>#{{pull_request.number}} \"{{pull_request.title}}\"</a>{{#label}} as <span style='color:{{label.color}};'>\"{{label.name}}\"</span>{{/label}}.", 
     "message_format": "html", 
     "color": "gray"
 }
