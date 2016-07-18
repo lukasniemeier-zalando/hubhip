@@ -30,7 +30,8 @@ app.all('*', function(request, response) {
 
     console.log(request.body.payload);
 
-    var payload = JSON.parse(request.body.payload.replace(/\\"/g, '"'));
+    //var payload = JSON.parse(request.body.payload.replace(/\\"/g, '"'));
+    var payload = JSON.parse(request.body.payload);
 
     console.log(type + ' @ ' + room);
 
