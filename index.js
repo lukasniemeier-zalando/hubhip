@@ -34,6 +34,7 @@ app.all('*', function(request, response) {
 
     var template = templates.getTemplate(type);
     if (!template) {
+        console.log("Unknown event type " + type);
         response.status(400).send("Unknown event type " + type);
         return;
     }
