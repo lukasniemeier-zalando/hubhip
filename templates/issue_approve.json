@@ -1,0 +1,5 @@
+{
+    "message": "<b><a href='{{repository.html_url}}'>{{repository.name}}</a></b> - <a href='{{comment.user.html_url}}'>{{comment.user.login}}</a> <a href='{{comment.html_url}}'>approved</a> {{#issue.pull_request}}pull request{{/issue.pull_request}}{{^issue.pull_request}}issue{{/issue.pull_request}} <a href='{{issue.html_url}}'>#{{issue.number}} \"{{issue.title}}\".", 
+    "message_format": "html", 
+    "color": "gray"
+}

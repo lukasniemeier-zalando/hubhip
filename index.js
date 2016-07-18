@@ -17,8 +17,16 @@ app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
-app.all('*', function(request, response) {
+function getType(type, payload) {
+    var action = payload.action || '';
+    var body = ((payload.comment && payload.comment.body) || '').trim();
+    if (type == 'issue_comment' && action == 'created' && (body == ':+1:' || body == '👍')) {
+        return 'issue_approve';
+    }
+    return type;
+}
 
+app.all('*', function(request, response) {
     var type = request.get('X-GitHub-Event');
     var token = request.body.auth_token;
     var room = request.body.room_id;
@@ -28,12 +36,13 @@ app.all('*', function(request, response) {
         return;
     }
 
-    var payload = JSON.parse(request.body.payload.replace(/\\"/g, '"'));
+    var payload = JSON.parse(request.body.payload);
 
     console.log(type + ' @ ' + room);
 
-    var template = templates.getTemplate(type);
+    var template = templates.getTemplate(getType(type, payload));
     if (!template) {
+        console.log("Unknown event type " + type);
         response.status(400).send("Unknown event type " + type);
         return;
     }
@@ -45,7 +54,10 @@ app.all('*', function(request, response) {
             auth: { bearer: token }
         },
         function (error, res, b) {
-            response.status(res.statusCode).send(b);
+            if (error) {
+                console.log("Error forwarding event: " + error);
+            }
+            response.status((res && res.statusCode) || 500).send(b);
         }
     );
     
