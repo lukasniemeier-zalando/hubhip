@@ -28,6 +28,8 @@ app.all('*', function(request, response) {
         return;
     }
 
+    console.log(request.body.payload);
+
     var payload = JSON.parse(request.body.payload.replace(/\\"/g, '"'));
 
     console.log(type + ' @ ' + room);
