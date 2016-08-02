@@ -46,7 +46,9 @@ app.all('*', function(request, response) {
             auth: { bearer: token }
         },
         function (error, res, b) {
-            console.log("Error forwarding event: " + error);
+            if (error) {
+                console.log("Error forwarding event: " + error);
+            }
             response.status((res && res.statusCode) || 500).send(b);
         }
     );
