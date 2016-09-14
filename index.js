@@ -28,12 +28,13 @@ app.all('*', function(request, response) {
         return;
     }
 
-    var payload = JSON.parse(request.body.payload.replace(/\\"/g, '"'));
+    var payload = JSON.parse(request.body.payload);
 
     console.log(type + ' @ ' + room);
 
     var template = templates.getTemplate(type);
     if (!template) {
+        console.log("Unknown event type " + type);
         response.status(400).send("Unknown event type " + type);
         return;
     }
@@ -45,7 +46,10 @@ app.all('*', function(request, response) {
             auth: { bearer: token }
         },
         function (error, res, b) {
-            response.status(res.statusCode).send(b);
+            if (error) {
+                console.log("Error forwarding event: " + error);
+            }
+            response.status((res && res.statusCode) || 500).send(b);
         }
     );
     
